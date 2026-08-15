@@ -1,0 +1,181 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["AGENTS.md"],
+  "references": {
+    "framework": {
+      "path": "{{framework_root}}/framework",
+      "description": "Marco normativo del sistema multiagente: reglas, contratos, umbrales, gates y decisiones (ADR). Úsalo para resolver dudas de proceso, delegación, permisos, routing o contratos antes de actuar."
+    }
+  },
+  "model": "{{model}}",
+  "agent": {
+    "analyst": {
+      "description": "Analiza requisitos, detecta ambigüedad y define acceptance criteria. Escribe en docs/00-overview.md, docs/02-scope.md, docs/tasks/ y changelog; no modifica código.",
+      "mode": "subagent",
+      "model": "{{model}}",
+      "temperature": 0.2,
+      "permission": {
+        "edit": {
+          "*": "deny",
+          "docs/00-overview.md": "allow",
+          "docs/02-scope.md": "allow",
+          "docs/tasks/**": "allow",
+          "docs/07-changelog.md": "allow"
+        },
+        "bash": {
+          "*": "deny"
+        },
+        "webfetch": "deny",
+        "websearch": "deny"
+      }
+    },
+    "architect": {
+      "description": "Diseña la solución técnica y registra decisiones como ADR. Escribe solo en docs/ y architecture/.",
+      "mode": "subagent",
+      "model": "{{model}}",
+      "temperature": 0.2,
+      "permission": {
+        "edit": {
+          "*": "deny",
+          "docs/**": "allow",
+          "architecture/**": "allow"
+        },
+        "bash": {
+          "*": "deny"
+        },
+        "webfetch": "deny",
+        "websearch": "deny"
+      }
+    },
+    "researcher": {
+      "description": "Investiga con evidencia verificable y compara alternativas. Solo lectura + acceso web; escribe en docs/research/ y changelog.",
+      "mode": "subagent",
+      "model": "{{model}}",
+      "temperature": 0.3,
+      "permission": {
+        "edit": {
+          "*": "deny",
+          "docs/research/**": "allow",
+          "docs/07-changelog.md": "allow"
+        },
+        "bash": {
+          "*": "deny"
+        },
+        "webfetch": "allow",
+        "websearch": "allow"
+      }
+    },
+    "developer": {
+      "description": "Implementa código y tests cumpliendo acceptance criteria. Escribe en src/, tests/, archivos de código, docs/tasks/ y changelog.",
+      "mode": "subagent",
+      "model": "{{model}}",
+      "temperature": 0.2,
+      "permission": {
+        "edit": {
+          "*": "deny",
+          "src/**": "allow",
+          "tests/**": "allow",
+          "docs/tasks/**": "allow",
+          "docs/07-changelog.md": "allow",
+          "*.ts": "allow",
+          "*.tsx": "allow",
+          "*.js": "allow",
+          "*.py": "allow",
+          "*.go": "allow",
+          "*.rs": "allow"
+        },
+        "bash": {
+          "*": "ask",
+          "git *": "ask",
+          "npm test*": "allow",
+          "npm run lint*": "allow",
+          "npm run build*": "allow",
+          "pytest*": "allow",
+          "go test*": "allow",
+          "cargo test*": "allow",
+          "rm *": "deny",
+          "git push --force *": "deny",
+          "git push -f *": "deny"
+        },
+        "webfetch": "deny",
+        "websearch": "deny"
+      }
+    },
+    "tester": {
+      "description": "Valida comportamiento, ejecuta tests y detecta regresiones. Escribe en tests/, docs/tasks/ y changelog.",
+      "mode": "subagent",
+      "model": "{{model}}",
+      "temperature": 0.2,
+      "permission": {
+        "edit": {
+          "*": "deny",
+          "tests/**": "allow",
+          "docs/tasks/**": "allow",
+          "docs/07-changelog.md": "allow"
+        },
+        "bash": {
+          "*": "ask",
+          "npm test*": "allow",
+          "pytest*": "allow",
+          "go test*": "allow",
+          "cargo test*": "allow",
+          "rm *": "deny",
+          "git push --force *": "deny",
+          "git push -f *": "deny"
+        },
+        "webfetch": "deny",
+        "websearch": "deny"
+      }
+    },
+    "reviewer": {
+      "description": "Revisa de forma independiente correctitud, mantenibilidad, seguridad y rendimiento. Solo lectura.",
+      "mode": "subagent",
+      "model": "{{model}}",
+      "temperature": 0.1,
+      "permission": {
+        "edit": {
+          "*": "deny"
+        },
+        "bash": {
+          "*": "deny"
+        },
+        "webfetch": "deny",
+        "websearch": "deny"
+      }
+    },
+    "security": {
+      "description": "Audita seguridad y produce hallazgos. Participa solo si security_sensitive es true. Escribe solo en docs/security/.",
+      "mode": "subagent",
+      "model": "{{model}}",
+      "temperature": 0.1,
+      "permission": {
+        "edit": {
+          "*": "deny",
+          "docs/security/**": "allow"
+        },
+        "bash": {
+          "*": "ask",
+          "npm audit*": "allow",
+          "go vet*": "allow",
+          "cargo audit*": "allow",
+          "grep *": "allow",
+          "git *": "ask",
+          "rm *": "deny",
+          "git push --force *": "deny",
+          "git push -f *": "deny"
+        },
+        "webfetch": "deny",
+        "websearch": "deny"
+      }
+    }
+  },
+  "permission": {
+    "edit": "ask",
+    "bash": {
+      "*": "ask",
+      "rm *": "deny",
+      "git push --force *": "deny",
+      "git push -f *": "deny"
+    }
+  }
+}

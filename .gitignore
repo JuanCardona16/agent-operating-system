@@ -1,0 +1,18 @@
+# Registro local de skills (por máquina, no versionable)
+.atl/
+
+# Configuración instalada por bootstrap en un proyecto destino
+.opencode/
+.opencode-backup-*/
+
+# Estado de ejecución del framework (ADR-019, ADR-021)
+runtime/
+
+# Editor / SO
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
