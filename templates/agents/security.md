@@ -5,17 +5,17 @@ model: {{model}}
 temperature: 0.1
 permission:
   edit:
-    - '**/*:deny'
-    - 'docs/security/**:allow'
+    '**/*': deny
+    'docs/security/**': allow
   bash:
-    - '*:deny'
-    - 'ls *:allow'
-    - 'cat *:allow'
-    - 'grep *:allow'
-    - 'find *:allow'
-    - 'npm audit*:allow'
-    - 'go vet*:allow'
-    - 'cargo audit*:allow'
+    '*': deny
+    'ls *': allow
+    'cat *': allow
+    'grep *': allow
+    'find *': allow
+    'npm audit*': allow
+    'go vet*': allow
+    'cargo audit*': allow
 ---
 
 # Security

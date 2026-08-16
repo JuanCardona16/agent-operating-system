@@ -5,16 +5,16 @@ model: {{model}}
 temperature: 0.2
 permission:
   edit:
-    - '**/*:deny'
-    - 'tests/**:allow'
+    '**/*': deny
+    'tests/**': allow
   bash:
-    - '*:deny'
-    - 'npm test*:allow'
-    - 'npm run lint*:allow'
-    - 'npm run build*:allow'
-    - 'pytest*:allow'
-    - 'go test*:allow'
-    - 'cargo test*:allow'
+    '*': deny
+    'npm test*': allow
+    'npm run lint*': allow
+    'npm run build*': allow
+    'pytest*': allow
+    'go test*': allow
+    'cargo test*': allow
 ---
 
 # Tester

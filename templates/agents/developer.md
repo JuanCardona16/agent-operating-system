@@ -5,24 +5,24 @@ model: {{model}}
 temperature: 0.2
 permission:
   edit:
-    - '**/*:allow'
-    - '*.lock:deny'
-    - '.env*:deny'
-    - '*secret*:deny'
-    - '*token*:deny'
-    - '*key*.json:deny'
+    '**/*': allow
+    '*.lock': deny
+    '.env*': deny
+    '*secret*': deny
+    '*token*': deny
+    '*key*.json': deny
   bash:
-    - '*:ask'
-    - 'npm test*:allow'
-    - 'npm run lint*:allow'
-    - 'npm run build*:allow'
-    - 'pytest*:allow'
-    - 'go test*:allow'
-    - 'cargo test*:allow'
-    - 'git *:ask'
-    - 'rm *:deny'
-    - 'git push --force *:deny'
-    - 'git push -f *:deny'
+    '*': ask
+    'npm test*': allow
+    'npm run lint*': allow
+    'npm run build*': allow
+    'pytest*': allow
+    'go test*': allow
+    'cargo test*': allow
+    'git *': ask
+    'rm *': deny
+    'git push --force *': deny
+    'git push -f *': deny
 ---
 
 # Developer

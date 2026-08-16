@@ -5,15 +5,15 @@ model: {{model}}
 temperature: 0.2
 permission:
   edit:
-    - '**/*:ask'
-    - 'docs/**:allow'
-    - 'architecture/**:allow'
+    '**/*': ask
+    'docs/**': allow
+    'architecture/**': allow
   bash:
-    - '*:deny'
-    - 'ls *:allow'
-    - 'cat *:allow'
-    - 'grep *:allow'
-    - 'find *:allow'
+    '*': deny
+    'ls *': allow
+    'cat *': allow
+    'grep *': allow
+    'find *': allow
 ---
 
 # Architect

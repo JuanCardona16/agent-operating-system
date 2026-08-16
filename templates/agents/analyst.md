@@ -5,13 +5,13 @@ model: {{model}}
 temperature: 0.2
 permission:
   edit:
-    - '*:deny'
+    '*': deny
   bash:
-    - '*:deny'
-    - 'ls *:allow'
-    - 'cat *:allow'
-    - 'grep *:allow'
-    - 'find *:allow'
+    '*': deny
+    'ls *': allow
+    'cat *': allow
+    'grep *': allow
+    'find *': allow
 ---
 
 # Analyst
