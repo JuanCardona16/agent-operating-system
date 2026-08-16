@@ -1,6 +1,6 @@
 ---
 description: 'Investigador: releva información con evidencia verificable (web, docs, repos). Nivel de acceso: solo lectura + búsqueda web; escribe solo en docs/research/** y changelog.'
-mode: subagent
+mode: all
 model: {{model}}
 temperature: 0.3
 permission:

@@ -1,6 +1,6 @@
 ---
 description: 'Analista de requisitos: desambigua la solicitud, define alcance y acceptance criteria. Escribe solo en docs/00-overview.md, docs/02-scope.md, docs/tasks/** y docs/07-changelog.md.'
-mode: subagent
+mode: all
 model: {{model}}
 temperature: 0.2
 permission:

@@ -1,6 +1,6 @@
 ---
 description: 'Revisor: revisión independiente de la implementación contra requisitos, design y gates. Nivel de acceso: solo lectura.'
-mode: subagent
+mode: all
 model: {{model}}
 temperature: 0.1
 permission:

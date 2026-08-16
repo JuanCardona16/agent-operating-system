@@ -1,6 +1,6 @@
 ---
 description: 'Tester: valida la implementación con tests y regresiones. Solo escribe en tests/**, docs/tasks/** y changelog; ejecuta comandos de test.'
-mode: subagent
+mode: all
 model: {{model}}
 temperature: 0.2
 permission:

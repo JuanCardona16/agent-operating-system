@@ -1,6 +1,6 @@
 ---
 description: 'Implementador: codifica y corrige según requisitos, escribiendo tests junto al código. Escribe código por extensión, docs/tasks/** y changelog; bash limitado a build/lint/test.'
-mode: subagent
+mode: all
 model: {{model}}
 temperature: 0.2
 permission:

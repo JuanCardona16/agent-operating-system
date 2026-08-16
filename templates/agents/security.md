@@ -1,6 +1,6 @@
 ---
 description: 'Auditor de seguridad: analiza superficie de ataque, dependencias y secretos. Solo escribe en docs/security/**.'
-mode: subagent
+mode: all
 model: {{model}}
 temperature: 0.1
 permission:

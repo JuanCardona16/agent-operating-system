@@ -1,6 +1,6 @@
 ---
 description: 'Arquitecto: define diseño técnico, interfaces y decisiones de arquitectura (ADR). Escribe solo en docs/** y architecture/**.'
-mode: subagent
+mode: all
 model: {{model}}
 temperature: 0.2
 permission:
